@@ -73,11 +73,13 @@ public class Pigs extends Elements {
 	
 	public void drawMedium () {
 		
+		if (match == true) {
+		
 		app.imageMode(PConstants.CENTER);
 		app.image(mediP1, X, Y, width, height);
 		app.imageMode(PConstants.CORNER);
 		
-		
+		}
 	}
 	
 	public void drawMedium1 () {
@@ -89,11 +91,15 @@ public class Pigs extends Elements {
 	}
 	
 	public void drawSmall () {
-				
+		
+		if (match == true) {
+			
+		
 		app.imageMode(PConstants.CENTER);
 		app.image(smallP1, X, Y, width, height);
 		app.imageMode(PConstants.CORNER);
 		
+		}
 	}
 	
 	public void drawSmall1 () {

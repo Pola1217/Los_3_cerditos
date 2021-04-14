@@ -31,7 +31,7 @@ public class Principal extends PApplet {
 	PImage wood, woodH, straw, brick;
 	
 	//screen
-	int screen = 3;
+	int screen = 0;
 	
 	//MVC
 	controller controller;
@@ -178,6 +178,8 @@ public class Principal extends PApplet {
 				screen = 2;
 				
 			}	
+			
+			
 			
 			break;
 			

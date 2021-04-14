@@ -46,13 +46,13 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(brick, 384,670, 190, 190);
+			this.app.image(brick, 284,627, 190, 190);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(brickH, 384,670, 250, 250);
+			this.app.image(brickH, 284,627, 250, 250);
 			
 			break;
 			
@@ -76,19 +76,19 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(wood, 684,670, 190, 190);
+			this.app.image(wood, 614,570, 190, 190);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(woodH, 684,670, 250, 250);
+			this.app.image(woodH, 614,570, 250, 250);
 			
 			break;
 			
 		case 2:
 			
-			this.app.image(woodHF, 684,670, 250, 250);
+			this.app.image(woodHF, 624,670, 250, 250);
 			
 			break;
 			
@@ -106,13 +106,13 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(straw, 984,670, 190, 190);
+			this.app.image(straw, 904,628, 190, 190);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(strawH, 984,670, 250, 250);
+			this.app.image(strawH, 904,628, 250, 250);
 			
 			break;
 			

@@ -47,7 +47,7 @@ public class Materials extends Elements {
 	public void drawS () {
 		
 		app.imageMode(PConstants.CENTER);
-		app.image(straw, X, Y, 170, 170);
+		app.image(straw, X, Y, width, height);
 		app.imageMode(PConstants.CORNER);
 		
 	}
