@@ -15,10 +15,10 @@ public class Principal extends PApplet {
 	
 	
 	//screens images
-	PImage START, STORY, MISION, GAME, GAMEND, FINISH;
+	PImage START, STORY, MISION, GAME, GAME1, GAME2, GAME3, GAMEND, FINISH;
 	
 	//parallax
-	PImage BACKG;
+	PImage BACKG, BACKG1;
 	
 	
 	//pigs
@@ -31,7 +31,7 @@ public class Principal extends PApplet {
 	PImage wood, woodH, straw, brick;
 	
 	//screen
-	int screen = 0;
+	int screen = 3;
 	
 	//MVC
 	controller controller;
@@ -48,24 +48,24 @@ public class Principal extends PApplet {
 		
 		controller = new controller(this);
 		
-		//screens
+		//screens context
 		START = loadImage ("data/INICIO.png");
 		STORY = loadImage ("data/STORY.png");
 		MISION = loadImage ("data/MISION.png");
+		
+		//screens game
 		GAME = loadImage ("data/GAME.png");
-		GAMEND = loadImage ("data/GAME-END.png");
+		GAME1 = loadImage ("data/GAME1.png");
+		GAME2 = loadImage ("data/GAME2.png");
+		GAME3 = loadImage ("data/GAME3.png");
+		
+		//end
 		FINISH = loadImage ("data/END.png");
 		
 		//parallax
-		BACKG = loadImage ("data/FONDO1-01.png");
+		BACKG = loadImage ("data/FONDO1.1-02.png");
+		BACKG1 = loadImage ("data/FONDO1-01.png");
 		
-//		//running
-//		bigP = loadImage("data/Pig1.PNG");
-//		//happy
-//		bigP1 = loadImage("data/Pig1.1.PNG");
-//		//materials
-//		wood = loadImage("data/Madera.PNG");
-//		woodH = loadImage("data/CasaMadera1.PNG");
 	}
 	
 	@Override
@@ -115,11 +115,39 @@ public class Principal extends PApplet {
 		
 		case 4:
 			
-			image (FINISH, 0, 0);
+			float dgX=map(mouseX,0,width,0,0-900);
+			image(BACKG1,dgX+100,100,2482,683);
+			
+			image (GAME1, 0, 0);
+			
+			controller.draw1();
 		
 		break;
 			
+		case 5:
+			
+			float f1gX=map(mouseX,0,width,0,0-900);
+			image(BACKG,f1gX+100,100,2482,683);
+			
+			image (GAME2, 0, 0);
+			
+			controller.draw2();
 		
+		break;
+		
+		case 6:
+			
+			image (GAME3, 0, 0);
+			
+			controller.draw3();
+		
+		break;
+		
+		case 7:
+			
+			image (FINISH, 0, 0);
+		
+		break;
 		
 		}
 		
@@ -133,7 +161,7 @@ public class Principal extends PApplet {
 		case 0://play
 			if (dist(mouseX, mouseY, 582,762) < 50) {
 				
-				screen = 3;
+				screen = 1;
 				
 			}
 			
@@ -177,20 +205,59 @@ public class Principal extends PApplet {
 				
 				screen = 2;
 				
-			}	
-			
-			
+			} else if (dist(mouseX, mouseY, 615,847) < 30)	{
+				
+				screen = 4;
+				
+			}
 			
 			break;
 			
 			
-		case 4://end
+		case 4:
 			
-			if (dist(mouseX, mouseY, 136,95) < 30) {
+			
+			
+			if (dist(mouseX, mouseY, 615,847) < 30) {
 				
-				screen = 1;
+				screen = 5;
 				
 			}	
+			
+			break;
+			
+		case 5:
+			
+			controller.clicked();
+			
+			
+			if (dist(mouseX, mouseY, 615,847) < 30) {
+				
+				screen = 6;
+				
+			}	
+
+			break;
+			
+		case 6:
+			
+			if (dist(mouseX, mouseY, 615,847) < 30) {
+				
+				screen = 7;
+				
+			}	
+
+			break;	
+			
+		case 7:
+			
+			if (dist(mouseX, mouseY, 144,74) < 30) {
+				
+				exit();
+				
+			}	
+
+			break;		
 		
 			}
 			
@@ -198,13 +265,13 @@ public class Principal extends PApplet {
 	
 	public void mouseDragged () {
 		
-		controller.Dmatching();
+		controller.dragged();
 		
 	}
 	
 public void mouseReleased () {
 		
-		controller.matching();
+	controller.Released();
 		
 	}
 		

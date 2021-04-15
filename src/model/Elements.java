@@ -14,6 +14,7 @@ public abstract class Elements {
 		this.width = width;
 				
 	}
+	
 
 	public int getX() {
 		return X;

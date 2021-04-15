@@ -21,15 +21,42 @@ public class controller {
 		
 	}
 	
-	public void Dmatching () {
+	public void draw1 () {
 		
-		logic.DmatchPigs();
+		logic.draw1();
 		
 	}
 	
-	public void matching() {
+	public void draw2 () {
+		
+		logic.draw3();
+		
+	}
+	
+	public void draw3 () {
+		
+		logic.draw2();
+		
+	}
+	
+	public void clicked () {
+		
+		logic.DmatchFire();
+		
+	}
+	
+	public void dragged () {
+		
+		logic.DmatchPigs();
+		logic.DblowWolf();
+		
+	}
+	
+	public void Released () {
 		
 		logic.matchPigs();
+		logic.matchFire();
+		logic.blowWolf();
 		
 	}
 	

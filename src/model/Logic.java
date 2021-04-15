@@ -22,13 +22,15 @@ public class Logic {
 	//class
 	
 	//class
-	private Pigs pigB , pigB1;
+	private Pigs pigB;
 	private Pigs pigM , pigM1;
 	private Pigs pigS , pigS1;
 	
+	private Wolf wolf, wolf1;
 	
-	private Materials wood, straw, brick;
-	private Houses strawH, woodH, brickH;
+	private Fireplace fire;
+	
+	private Houses strawH, strawH1, woodH, woodH1, brickH;
 	
 	
 	public Logic (PApplet app) {
@@ -38,38 +40,40 @@ public class Logic {
 		words = new ArrayList<>();
 		
 		//wolf
+		wolf = new Wolf(app, 284,627, 300, 300);
+		wolf1 = new Wolf(app, 620,407, 430, 430);
 		
-		
-		//materials
-		brick = new Materials (app, 284,627, 190, 190);
-		wood = new Materials (app, 614,570, 190, 190);
-		straw = new Materials (app, 904,628, 190, 19);
+		//fire
+		fire = new Fireplace (app, 620,567, 350, 370);
 		
 		//big pig
 		//happy
 		pigB = new Pigs(app, 413,702, 190, 190);
 		//scare
-		pigB1 = new Pigs(app, 250, 659, 190, 190);
+		//pigB1 = new Pigs(app, 250, 659, 190, 190);
 
 		//medium pig
 		//happy
 		pigM = new Pigs(app, 614,702, 190, 190);
 		//scare
-		pigM1 = new Pigs(app, 250, 659, 190, 190);
+		pigM1 = new Pigs(app, 895, 630, 150, 150);
 		
 		//small pig
 		//happy
-		pigS = new Pigs(app, 734,702, 190, 190);
+		pigS = new Pigs(app, 823,707, 190, 190);
 		//scare
-		pigS1 = new Pigs(app, 250, 659, 190, 190);
+		pigS1 = new Pigs(app, 985, 659, 150, 150);
 		
 		
 		
 		//houses
-		brickH = new Houses (app);
-		woodH = new Houses (app);
-		strawH = new Houses (app);
+		brickH = new Houses (app, 284,627, 220, 220);
 		
+		woodH = new Houses (app, 614,480, 270, 270);
+		woodH1 = new Houses (app, 614,510, 320, 320);
+		
+		strawH = new Houses (app, 984,628, 270, 270);
+		strawH1 = new Houses (app, 614,510, 320, 320);
 		
 		
 	}
@@ -93,11 +97,6 @@ public class Logic {
 	
 	public void draw () {
 		
-		//materials
-		brick.drawB();
-		wood.drawW();
-		straw.drawS();
-		
 		//houses
 		brickH.drawB();
 		woodH.drawW();
@@ -113,6 +112,44 @@ public class Logic {
 		pigM.drawMedium();
 		//small
 		pigS.drawSmall();
+		
+	}
+	
+	public void draw1 () {
+		
+		strawH1.drawS();
+		strawH1.setHouseS(1);
+		
+		//wolf
+		wolf.draw1();
+		
+		//piggys
+		//small
+		pigS1.drawSmall1();
+		
+	}
+	
+	public void draw3 () {
+		
+		//wolf
+		woodH1.drawW();
+		woodH1.setHouseW(1);
+		//wolf
+		wolf.draw1();
+		
+		//piggys
+		pigS1.drawSmall1();
+		pigM1.drawMedium1();
+		
+	}
+	
+	public void draw2 () {
+		
+		//fire
+		fire.draw();
+				
+		//wolf
+		wolf1.draw2();
 		
 	}
 	
@@ -154,7 +191,7 @@ public class Logic {
 //			System.out.print("es nulo mijita");
 			
 		//big pig 
-		if (PApplet.dist (brick.getX(), brick.getY(), pigB.getX(), pigB.getY()) < brick.getWidth()/2) {
+		if (PApplet.dist (brickH.getX(), brickH.getY(), pigB.getX(), pigB.getY()) < brickH.getWidth()/2) {
 			
 			brickH.setHouseB(1);
 			pigB.setMatch(true);
@@ -163,7 +200,7 @@ public class Logic {
 		}
 	//}
 		//medium pig
-		if (PApplet.dist(wood.getX(), wood.getY(), pigM.getX(), pigM.getY())< wood.getWidth()/2) {
+		if (PApplet.dist(woodH.getX(), woodH.getY(), pigM.getX(), pigM.getY())< woodH.getWidth()/2) {
 			
 			woodH.setHouseW(1);
 			pigM.setMatch(true);
@@ -171,21 +208,59 @@ public class Logic {
 		}
 		
 		//small pig
-		if (PApplet.dist(straw.getX(), straw.getY(), pigS.getX(), pigS.getY()) < straw.getWidth()/2) {
+		if (PApplet.dist(strawH.getX(), strawH.getY(), pigS.getX(), pigS.getY()) < strawH.getWidth()/2) {
 			
 			strawH.setHouseS(1);
 			pigS.setMatch(true);
 			
 		}		
 	}
+
+	public void DmatchFire () {
+				
+		if (PApplet.dist(app.mouseX, app.mouseY, fire.getX(), fire.getY()) < fire.getWidth()/2) {
+			
+			fire.setMatch(true);
+		
+		}
+	}
+	
+	public void matchFire () {
+		
+		if (PApplet.dist (fire.getX(), fire.getY(), 620,567) < fire.getWidth()/2 ) {
+			
+			wolf1.setClick3(true);
+			fire.setMatch(true);
+		
+		}
+	}
+	
+	public void DblowWolf () {
+		
+		if (PApplet.dist(app.mouseX, app.mouseY, wolf.getX(), wolf.getY()) < wolf.getWidth()/2 ) {
+			
+			wolf.setX(app.mouseX);
+			wolf.setY(app.mouseY);
+			
+		}
+	}
 	
 	public void blowWolf () {
 		
-		if (PApplet.dist(app.mouseX, app.mouseY, pigB.getX(), pigB.getY()) < pigB.getWidth()/2) {
+		if (PApplet.dist(strawH1.getX(), strawH1.getY(), wolf.getX(), wolf.getY()) < strawH1.getWidth()/2 && strawH1.getHouseS() == 1) {
 			
-			pigB.setX(app.mouseX);
-			pigB.setY(app.mouseY);
-					
+			strawH1.setHouseS(2);
+			wolf.setClick2(true);
+			
+			
+		}
+		
+		if (PApplet.dist(woodH1.getX(), woodH1.getY(), wolf.getX(), wolf.getY()) < woodH1.getWidth()/2 && woodH1.getHouseW() == 1) {
+			
+			woodH1.setHouseW(2);
+			wolf.setClick2(true);
+			
+			
 		}
 		
 	}

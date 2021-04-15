@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
 
-public class Houses {
+public class Houses extends Elements{
 	
 	private PApplet app;
 	
@@ -15,7 +15,9 @@ public class Houses {
 	
 	private int houseW, houseS, houseB;
 	
-	public Houses (PApplet app) {
+	public Houses (PApplet app, int X, int Y, int width, int height) {
+		
+		super(app, X, Y, width, height);
 		
 		this.app = app;
 		
@@ -46,19 +48,19 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(brick, 284,627, 190, 190);
+			this.app.image(brick, X, Y, width, height);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(brickH, 284,627, 250, 250);
+			this.app.image(brickH, 284,570, 250, 250);
 			
 			break;
 			
 		case 2:
 			
-			this.app.image(brickHF, 384,670, 250, 250);
+			this.app.image(brickHF, 384,570, 250, 250);
 			
 			break;
 			
@@ -76,19 +78,19 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(wood, 614,570, 190, 190);
+			this.app.image(wood, X, Y, width, height);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(woodH, 614,570, 250, 250);
+			this.app.image(woodH, X, Y, width, height);
 			
 			break;
 			
 		case 2:
 			
-			this.app.image(woodHF, 624,670, 250, 250);
+			this.app.image(woodHF, X, Y, width, height);
 			
 			break;
 			
@@ -106,19 +108,19 @@ public class Houses {
 		
 		case 0:
 			
-			this.app.image(straw, 904,628, 190, 190);
+			this.app.image(straw, X, Y, width, height);
 			
 			break;
 		
 		case 1:
 			
-			this.app.image(strawH, 904,628, 250, 250);
+			this.app.image(strawH, X, Y, width, height);
 			
 			break;
 			
 		case 2:
 			
-			this.app.image(strawHF, 984,670, 250, 250);
+			this.app.image(strawHF, X, Y, width, height);
 			
 			break;
 			
@@ -134,6 +136,30 @@ public class Houses {
 
 	public void setApp(PApplet app) {
 		this.app = app;
+	}
+
+	public PImage getWood() {
+		return wood;
+	}
+
+	public void setWood(PImage wood) {
+		this.wood = wood;
+	}
+
+	public PImage getStraw() {
+		return straw;
+	}
+
+	public void setStraw(PImage straw) {
+		this.straw = straw;
+	}
+
+	public PImage getBrick() {
+		return brick;
+	}
+
+	public void setBrick(PImage brick) {
+		this.brick = brick;
 	}
 
 	public PImage getWoodH() {
@@ -190,30 +216,6 @@ public class Houses {
 
 	public void setHouseW(int houseW) {
 		this.houseW = houseW;
-	}
-
-	public PImage getWood() {
-		return wood;
-	}
-
-	public void setWood(PImage wood) {
-		this.wood = wood;
-	}
-
-	public PImage getStraw() {
-		return straw;
-	}
-
-	public void setStraw(PImage straw) {
-		this.straw = straw;
-	}
-
-	public PImage getBrick() {
-		return brick;
-	}
-
-	public void setBrick(PImage brick) {
-		this.brick = brick;
 	}
 
 	public int getHouseS() {
